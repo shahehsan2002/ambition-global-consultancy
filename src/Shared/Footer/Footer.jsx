@@ -1,9 +1,8 @@
-// Import necessary modules and components
-import React from 'react';
+
 
 const Footer = () => {
-  return (
-    <div>
+    return (
+        <div>
       <footer className="footer p-10 bg-neutral text-neutral-content">
         <aside>
           <svg width="50" height="50" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" className="fill-current">
@@ -32,6 +31,7 @@ const Footer = () => {
         </aside>
       </footer>
     </div>
-  );
+    );
 };
 
+export default Footer;
