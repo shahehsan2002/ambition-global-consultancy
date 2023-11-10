@@ -7,7 +7,7 @@ import 'swiper/css/navigation';
 import { useEffect, useState } from "react";
 import { Rating } from "@smastrom/react-rating";
 import '@smastrom/react-rating/style.css'
-import { FaBeer } from 'react-icons/fa';
+
 
 
 const Testimonials = () => {
