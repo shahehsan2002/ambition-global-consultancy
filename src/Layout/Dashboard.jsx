@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { FaShoppingCart, FaHome, FaCalendar, FaAd } from "react-icons/fa";
+import { FaShoppingCart, FaHome, FaCalendar, FaAd,FaSearch } from "react-icons/fa";
 const Dashboard = () => {
     return (
         <div className="flex">
@@ -36,10 +36,24 @@ const Dashboard = () => {
                             <FaCalendar></FaCalendar>
                             My Booking</NavLink>
                     </li>
+                    {/* DIVIDER AREA */}
+                    <div className="divider divider-success"></div>
+                    <li>
+
+                        <NavLink to='/'>
+                            <FaHome></FaHome>
+                            Home</NavLink>
+                    </li>
+                    <li>
+
+                        <NavLink to='/order/salad'>
+                            <FaSearch></FaSearch>
+                            Menu</NavLink>
+                    </li>
                 </ul>
             </div>
             {/* DASHBOARD CONTENT */}
-            <div className="flex-1">
+            <div className="flex-1 p-8">
                 <Outlet></Outlet>
             </div>
         </div>
