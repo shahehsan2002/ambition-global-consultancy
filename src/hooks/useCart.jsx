@@ -18,4 +18,4 @@ const useCart = () => {
     return [cart, refetch]
 };
 
-export default useCart
+export default useCart 
