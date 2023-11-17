@@ -1,14 +1,46 @@
+import Swal from "sweetalert2";
 import useCart from "../../../hooks/useCart";
 
+import { FaTrash } from "react-icons/fa";
+import UseAxiosSecure from "../../../hooks/UseAxiosSecure";
 
 const Cart = () => {
-    const [cart] = useCart();
-    const totalPrice = cart.reduce((total, item) => total + item.price, 0)
+    const [cart, refetch] = useCart();
+    const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+    const axiosSecure = UseAxiosSecure();
+
+    const handleDelete = id => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                //   
+                axiosSecure.delete(`/carts/${id}`)
+                    .then(res => {
+                        // console.log(res);
+                        if (res.data.deletedCount > 0) {
+                            refetch();
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                        }
+                    })
+            }
+        });
+    }
     return (
         <div>
-            <div className="flex justify-evenly">
+            <div className="flex justify-evenly mb-6">
                 <h2 className="text-3xl text-center underline">Items: {cart.length}</h2>
-                <h2 className="text-3xl text-center underline">Total Price: {totalPrice}</h2>
+                <h2 className="text-3xl text-center underline">Total Price: ${totalPrice}</h2>
                 <button className="btn btn-primary">Pay</button>
             </div>
 
@@ -28,11 +60,9 @@ const Cart = () => {
                     </thead>
                     <tbody>
                         {
-                            cart.map(item => <tr key={item._id}>
+                            cart.map((item, index) => <tr key={item._id}>
                                 <th>
-                                    <label>
-                                        <input type="checkbox" className="checkbox" />
-                                    </label>
+                                    {index + 1}
                                 </th>
                                 <td>
                                     <div className="flex items-center gap-3">
@@ -41,20 +71,21 @@ const Cart = () => {
                                                 <img src={item.image} alt="Food item image" />
                                             </div>
                                         </div>
-                                        <div>
-                                            <div className="font-bold">Hart Hagerty</div>
-                                            <div className="text-sm opacity-50">United States</div>
-                                        </div>
+
                                     </div>
                                 </td>
                                 <td>
-                                    Zemlak, Daniel and Leannon
-                                    <br />
-                                    <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
+                                    {item.name}
                                 </td>
-                                <td>Purple</td>
+                                <td>
+                                    ${item.price}
+                                </td>
                                 <th>
-                                    <button className="btn btn-ghost btn-xs">details</button>
+                                    <button
+                                        onClick={() => handleDelete(item._id)}
+                                        className="btn btn-ghost btn-lg">
+                                        <FaTrash></FaTrash>
+                                    </button>
                                 </th>
                             </tr>)
                         }
