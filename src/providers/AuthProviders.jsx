@@ -44,8 +44,14 @@ const AuthProviders = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
-            setLoading(false); // Set loading to false once the authentication state is determined
-            console.log('current user', currentUser);
+            if(currentUser){
+                // get token and store client
+            }
+            else{
+                // do something
+            }
+            setLoading(false); 
+            
         });
 
         // Cleanup the subscription when the component unmounts

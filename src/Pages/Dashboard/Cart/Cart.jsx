@@ -32,7 +32,7 @@ const Cart = () => {
                                 icon: "success"
                             });
                         }
-                    })
+                    });
             }
         });
     }
