@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 
 const AllUsers = () => {
   const axiosSecure = UseAxiosSecure();
+
   const { data: users = [], refetch } = useQuery({
     queryKey: ['users'],
     queryFn: async () => {
@@ -12,6 +13,7 @@ const AllUsers = () => {
       return res.data;
     }
   });
+
 
   const handleMakeAdmin = user => {
     axiosSecure.patch(`/users/admin/${user._id}`)
