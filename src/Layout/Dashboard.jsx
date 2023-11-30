@@ -1,13 +1,13 @@
 import { NavLink, Outlet } from "react-router-dom";
 import {  FaHome, FaCalendar, FaAd, FaMicrophone,  FaList,  FaUsers,  } from "react-icons/fa";
 // import useCart from "../hooks/useCart";
-import useAdmin from "../hooks/useAdmin"
+// import useAdmin from "../hooks/useAdmin"
 const Dashboard = () => {
     // const [cart] = useCart();
     // TODO :get isAdmin value from the database
 
-    // const isAdmin = true;
-    const [isAdmin] = useAdmin();
+    const isAdmin = true;
+    // const [isAdmin] = useAdmin();
     return (
         <div className="flex">
             {/* DASHBOARD SIDEBAR */}
@@ -39,6 +39,12 @@ const Dashboard = () => {
                                     <FaUsers></FaUsers>
                                     Manage Users</NavLink>
                             </li>
+                            <li>
+
+                                    <NavLink to='/dashboard/addPost'>
+                                        <FaAd></FaAd>
+                                        Add Post</NavLink>
+                                </li>
 
                         </>
                             :
@@ -49,6 +55,13 @@ const Dashboard = () => {
                                         <FaHome></FaHome>
                                         My Profile</NavLink>
                                 </li>
+                                <li>
+
+                                    <NavLink to='/dashboard/addPost'>
+                                        <FaAd></FaAd>
+                                        Add Post</NavLink>
+                                </li>
+                                
                                 
                                 {/* <li>
 

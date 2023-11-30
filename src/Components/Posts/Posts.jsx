@@ -13,7 +13,7 @@ const Posts = () => {
 
     return (
         <div>
-            <h2>Posts</h2>
+            <h2 className="text-center m-8 text-3xl text-bold underline">Posts</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {
                     posts.map(post => (
