@@ -1,15 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../Pages/Home/Home";
-import Menu from "../Pages/Menu/Menu/Menu";
-import Order from "../Pages/Order/Order/Order";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
-import Secret from "../Shared/Secret/Secret";
 import Dashboard from "../Layout/Dashboard";
-import Cart from "../Pages/Dashboard/Cart/Cart";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
+import Membership from "../Pages/Membership/Membership";
+import Announcement from "../Pages/Home/Announcement/Announcement";
+import MakeAnnouncement from "../Pages/Dashboard/AllUsers/MakeAnnouncement/MakeAnnouncement";
+import AddPost from "../Pages/Dashboard/AddPost/AddPost";
+import PostDetails from "../Pages/PostDetails/PostDetails";
+
 
 
 
@@ -23,13 +25,19 @@ export const router = createBrowserRouter([
             element:<Home></Home>
         },
         {
-          path:'/menu',
-          element:<Menu></Menu>
+          path:'/membership',
+          element:<Membership></Membership>
         },
         {
-          path:'order/:category',
-          element:<Order></Order>
+          path:'/announcement',
+          element:<Announcement></Announcement>
         },
+        {
+          path:'/post/:id',
+          element:<PostDetails></PostDetails>
+        },
+        
+        
         {
           path:'login',
           element:<Login></Login>
@@ -38,25 +46,30 @@ export const router = createBrowserRouter([
           path:'signup',
           element:<SignUp></SignUp>
         },
-      {
-        path:'secret',
-        element:<PrivateRoute> <Secret></Secret> </PrivateRoute>
-      }
+      
       ]
     },
     {
       path:'dashboard',
       element: <PrivateRoute> <Dashboard></Dashboard> </PrivateRoute> ,
       children:[
-        {
-          path:'cart',
-          element:<Cart></Cart>,
-        },
+        
         // admin routes
         {
           path:'users',
           element:<AllUsers></AllUsers>
         },
+        {
+          path:'makeAnnouncement',
+          element:<MakeAnnouncement></MakeAnnouncement>
+        },
+
+        // user routes
+        {
+          path:'addPost',
+          element:<AddPost></AddPost>
+        }
+        
       ]
     }
   ]);
