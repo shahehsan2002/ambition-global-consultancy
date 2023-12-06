@@ -1,7 +1,10 @@
 import { Helmet } from "react-helmet-async";
 import Banner2 from "./Banner/Banner2";
-import Announcement from "./Announcement/Announcement";
-import Posts from "../../Components/Posts/Posts";
+import Testimonials from "../Testimonials/Testimonials";
+import Services from "./Services/Services";
+import Supply from "./Supply/Supply";
+import Consultancy from "./Consultancy/Consultancy";
+
 
 
 
@@ -9,11 +12,15 @@ const Home = () => {
     return (
         <div>
             <Helmet>
-                <title>Discuss Dive |Home</title>
+                <title>Ambition |Home</title>
             </Helmet>
             <Banner2></Banner2>
-            <Posts></Posts>
-            <Announcement></Announcement>
+            <Services></Services>
+            <Supply></Supply>
+            <Consultancy></Consultancy>
+            <Testimonials></Testimonials>
+            
+            
         
         
         

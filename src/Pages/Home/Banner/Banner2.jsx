@@ -1,34 +1,13 @@
-import { useState } from 'react';
-import img6 from '../../../assets/images/banner1.jpg';
-
+import bannerImg from '../../../assets/Image/Banner.jpg';
 const Banner2 = () => {
-    const [searchQuery, setSearchQuery] = useState('');
-
-    const handleSearch = (e) => {
-        setSearchQuery(e.target.value);
-        // Perform search operations based on searchQuery
-        // This could involve filtering posts, fetching search results, etc.
-    };
-
     return (
-        <div className="hero min-h-screen" style={{ backgroundImage: `url(${img6})` }}>
+        <div className="hero min-h-screen" style={{ backgroundImage: `url(${bannerImg})` }}>
             <div className="hero-overlay bg-opacity-60"></div>
             <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-md">
-                    {/* Header content */}
-                    <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-                    
-                    <div className="flex justify-center items-center mb-8">
-                        <input
-                            type="text"
-                            placeholder="Search..."
-                            value={searchQuery}
-                            onChange={handleSearch}
-                            className="border border-gray-300 px-3 py-2 rounded-md mr-2 focus:outline-none"
-                        />
-                        <button className="btn btn-primary">Search</button>
-                    </div>
-                    
+                    <h1 className="text-xl md:text-2xl lg:text-4xl font-bold text-white leading-tight">Explore the World with Ambition Global Consultancy</h1>
+                    <p className="text-base md:text-lg lg:text-xl text-white mt-4 md:mt-6">Discover breathtaking destinations and create unforgettable memories.</p>
+                    {/* <p className="btn btn-outline m-4 shadow-lg">Get Started</p> */}
                 </div>
             </div>
         </div>

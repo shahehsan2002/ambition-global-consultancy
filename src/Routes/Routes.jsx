@@ -6,11 +6,12 @@ import SignUp from "../Pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/Dashboard";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
-import Membership from "../Pages/Membership/Membership";
-import Announcement from "../Pages/Home/Announcement/Announcement";
 import MakeAnnouncement from "../Pages/Dashboard/AllUsers/MakeAnnouncement/MakeAnnouncement";
 import AddPost from "../Pages/Dashboard/AddPost/AddPost";
-import PostDetails from "../Pages/PostDetails/PostDetails";
+// import PostDetails from "../Pages/PostDetails/PostDetails";
+import AboutUs from "../Pages/About Us/AboutUs";
+import Contact from "../Pages/Contact/Contact";
+import ServiceDetails from "../Pages/Home/Services/ServiceDetails";
 
 
 
@@ -25,16 +26,18 @@ export const router = createBrowserRouter([
             element:<Home></Home>
         },
         {
-          path:'/membership',
-          element:<Membership></Membership>
+          path:"/post/:postId",
+          element:<ServiceDetails></ServiceDetails>
+        },
+        
+        
+        {
+          path:'/about',
+          element:<AboutUs></AboutUs>
         },
         {
-          path:'/announcement',
-          element:<Announcement></Announcement>
-        },
-        {
-          path:'/post/:id',
-          element:<PostDetails></PostDetails>
+          path:'/contact',
+          element:<Contact></Contact>
         },
         
         
