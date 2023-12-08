@@ -11,7 +11,7 @@ const ServiceCard = ({ post }) => {
                     <h2 className="card-title item-center text-center text-xl font-extrabold">{post.service_name}</h2>
                     {/* <p>{post.short_description}</p> */}
                     <p>{post.full_description}</p>
-                    <div className="card-actions justify-end">
+                    <div className="card-actions font-bold justify-end">
                         {/* <button className="btn btn-primary">Learn More</button> */}
                     </div>
                 </div>

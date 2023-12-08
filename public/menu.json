@@ -4,42 +4,43 @@
       "service_name": "Employee Travel Services",
       "short_description": "Corporate travel solutions for businesses.",
       "full_description": "Our Employee Travel Services cater exclusively to the corporate world, providing comprehensive solutions for all business-related travel needs. We understand the intricacies of corporate travel, offering tailored services for executive trips, team-building excursions, seminars, and conferences. From arranging flights and accommodations to coordinating ground transportation, our services ensure convenience, cost-effectiveness, and comfort. With our expertise, businesses can focus on their core activities while we manage the complexities of travel logistics.",
-      "img": "https://i.ibb.co/LgcgL76/images.jpg"
+      "img": "https://i.postimg.cc/yd7tvp6s/employ-treavel.jpg"
     },
     {
       "_id": "2",
       "service_name": "Student Consultancy",
       "short_description": "Expert guidance for studying abroad.",
       "full_description": "Our Student Consultancy services are designed to guide aspiring students through the entire process of studying abroad. We offer personalized consultations, assisting students in choosing suitable courses, selecting universities, and navigating the intricacies of the application process. Our expert advisors provide insights into various educational systems, cultural adjustments, and career prospects. We equip students with the necessary information and resources to make informed decisions about their academic pursuits abroad, ensuring a smooth transition and a rewarding educational experience.",
-      "img": "https://i.ibb.co/LgcgL76/images.jpg"
+      "img": "https://i.postimg.cc/Fsj9W8NJ/student-consultancy.jpg"
     },
     {
       "_id": "3",
       "service_name": "Student Visa Services",
       "short_description": "Visa services for students.",
       "full_description": "Navigating the complexities of obtaining a student visa is a crucial step for international students. Our Student Visa Services streamline this process, providing comprehensive support and guidance throughout. We assist in preparing visa applications, ensuring they meet all requirements and documentation standards. Our experts offer insights into visa interview preparation, financial documentation, and complying with embassy regulations. With our support, students can confidently embark on their educational journey abroad, free from the complexities of visa procedures.",
-      "img": "https://i.ibb.co/LgcgL76/images.jpg"
+      "img": "https://i.postimg.cc/8CsgS0Q4/student-visa.jpg"
     },
     {
       "_id": "4",
       "service_name": "Work Permit Visa Services",
       "short_description": "Visa services for work permits.",
       "full_description": "For individuals seeking employment opportunities abroad, our Work Permit Visa Services simplify the process of obtaining necessary work permits. We assist in understanding visa requirements, preparing the required documentation, and navigating the application process. Our consultants offer insights into specific work visa categories, employer sponsorship, and compliance with immigration regulations. We aim to streamline the process, ensuring a smooth transition for individuals pursuing career opportunities overseas.",
-      "img": "https://i.ibb.co/LgcgL76/images.jpg"
+      "img": "https://i.postimg.cc/NGn364X2/work-permit.jpg"
     },
     {
       "_id": "5",
       "service_name": "Visit Visa Services",
       "short_description": "Visas for tourism and family visits.",
       "full_description": "Our Visit Visa Services cater to individuals seeking visas for tourism, family visits, or leisure travel. We simplify the visa application process, offering guidance on required documentation, eligibility criteria, and embassy procedures. Whether it's planning a holiday, visiting family or friends, or exploring new destinations, our services provide a hassle-free visa application experience. We assist in ensuring that applications meet all necessary requirements, allowing individuals to enjoy their travel plans with peace of mind.",
-      "img": "../src/assets/Image/visit.jpg"
+      "img": "https://i.postimg.cc/pLgvC9C2/visit.jpg"
+      
     },
     {
       "_id": "6",
       "service_name": "Air Ticket Booking",
       "short_description": "Effortless air ticket bookings.",
       "full_description": "Our Air Ticket Booking services cover both domestic and international travel, offering a seamless booking experience. We provide access to a wide range of flight options, competitive prices, and convenient reservation processes. Our platform simplifies the flight booking process, allowing travelers to compare options, select preferred seats, and make secure reservations. With our dedication to offering the best deals and efficient booking services, travelers can focus on their journey while leaving the hassle of ticket reservations to us.",
-      "img": "../src/assets/Image/ticket.jpg"
+      "img": "https://i.postimg.cc/sXLv4fM7/ticket.jpg"
     }
   ]
   

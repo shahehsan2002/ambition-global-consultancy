@@ -1,4 +1,4 @@
-import bannerImg from '../../../assets/Image/Banner.jpg';
+import bannerImg from '../../../assets/Image/sasha-freemind-cm0eSVxdLDg-unsplash.jpg';
 const Banner2 = () => {
     return (
         <div className="hero min-h-screen" style={{ backgroundImage: `url(${bannerImg})` }}>
