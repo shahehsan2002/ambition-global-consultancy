@@ -51,8 +51,7 @@ const Contact = () => {
         <div className="flex items-center space-x-4">
           <MdPhone className="text-blue-500" size={24} />
           <span>
-            Phone: +8801788-895718 <br />
-            +8801718-148790
+            Phone:+8801718-148790
           </span>
         </div>
         <div className="flex items-center space-x-4">
