@@ -19,6 +19,8 @@ const Testimonials = () => {
 
   return (
     <section>
+      <h2 className='text-3xl text-center font-bold' >What Saying our Happy <br />
+Customers</h2>
       <Swiper navigation={true} className="mySwiper">
         {reviews.map(review => (
           <SwiperSlide key={review._id}>
