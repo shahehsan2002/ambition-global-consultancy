@@ -1,5 +1,5 @@
 
-import { useInView } from "react-intersection-observer"; // For scroll animations
+import { useInView } from "react-intersection-observer"; 
 
 const Services = () => {
   const services = [
