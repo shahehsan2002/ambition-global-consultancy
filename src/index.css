@@ -1,3 +1,61 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@keyframes fancyText {
+    0% {
+      opacity: 0;
+      transform: translateY(30px) scale(1.1);
+    }
+    50% {
+      opacity: 0.5;
+      transform: translateY(0) scale(1.05);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  @keyframes fancyText2 {
+    0% {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    50% {
+      opacity: 0.5;
+      transform: translateX(15px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes typingEffect {
+    0% {
+      width: 0;
+    }
+    50% {
+      width: 70%;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+  
+  .animate-fancy-text {
+    animation: fancyText 1s ease-out forwards;
+  }
+  
+  .animate-fancy-text-2 {
+    animation: fancyText2 1.2s ease-out forwards;
+  }
+  
+  .animate-typing-effect {
+    overflow: hidden;
+    border-right: 3px solid #fff;
+    white-space: nowrap;
+    width: 0;
+    animation: typingEffect 3s steps(30) 1s forwards;
+  }
+  
