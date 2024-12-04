@@ -172,7 +172,7 @@ const AboutUs = () => {
             <img
               src="https://via.placeholder.com/500"
               alt="Journey"
-              className="rounded-lg shadow-xl hover:scale-105 transition-transform duration-300"
+              className="rounded-lg shadow-xl hover:scale-105 transition-transform duration-400"
             />
           </div>
         </div>
