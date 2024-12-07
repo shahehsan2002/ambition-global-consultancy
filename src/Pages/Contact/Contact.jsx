@@ -151,7 +151,7 @@ const Contact = () => {
       {/* Additional Contact Options */}
       <motion.div
         className="border rounded-md p-6 w-full md:w-3/4 lg:w-2/3 mb-8 shadow-lg bg-white"
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 51 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
