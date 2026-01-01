@@ -1,35 +1,36 @@
-
-import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa"; // Import the required icons from react-icons/fa
+import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="footer footer-center p-10 bg-gradient-to-r from-gray-800 via-gray-700 to-gray-900 text-white">
+    <footer className="footer footer-center p-10 bg-slate-200 dark:bg-slate-900 text-slate-600 dark:text-slate-300 transition-colors duration-300">
       <nav>
         <div className="flex justify-center gap-6 mb-4">
           <a
             href="https://www.facebook.com/ambitionglobalconsultancy?mibextid=ZbWKwL"
-            className="text-xl hover:text-blue-500 transform transition-all duration-300 hover:scale-125"
+            className="text-2xl text-blue-600 dark:text-blue-400 hover:scale-125 transition-transform duration-300"
+            aria-label="Facebook"
           >
             <FaFacebook />
           </a>
           <a
             href="https://instagram.com/ambition_global_consultancy?igshid=OGQ5ZDc2ODk2ZA"
-            className="text-xl hover:text-pink-500 transform transition-all duration-300 hover:rotate-12"
+            className="text-2xl text-pink-600 dark:text-pink-400 hover:rotate-12 transition-transform duration-300"
+            aria-label="Instagram"
           >
             <FaInstagram />
           </a>
           <a
             href="https://wa.me/message/EN3QXKHPZJW7B1"
-            className="text-xl hover:text-green-500 transform transition-all duration-300 hover:scale-125"
+            className="text-2xl text-green-600 dark:text-green-400 hover:scale-125 transition-transform duration-300"
+            aria-label="WhatsApp"
           >
             <FaWhatsapp />
           </a>
         </div>
       </nav>
       <aside>
-        <p className="text-xs sm:text-sm md:text-base lg:text-lg">
-          &copy; {new Date().getFullYear()} Ambition Global Consultancy. All
-          Rights Reserved.
+        <p className="font-medium">
+          &copy; {new Date().getFullYear()} <span className="text-primary font-bold">Ambition Global Consultancy</span>. All Rights Reserved.
         </p>
       </aside>
     </footer>

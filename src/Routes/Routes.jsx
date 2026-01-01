@@ -11,15 +11,20 @@ import Home from "../Pages/Home/Home";
 // import PostDetails from "../Pages/PostDetails/PostDetails";
 import AboutUs from "../Pages/About Us/AboutUs";
 import Contact from "../Pages/Contact/Contact";
+
 // import ServiceDetails from "../Pages/Home/Services/ServiceDetails";
 
 
+
+
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 
 export const router = createBrowserRouter([
     {
       path: "/",
       element: <Main></Main>,
+      errorElement: <ErrorPage />,
       children: [
         {
             path:'/',
@@ -39,29 +44,6 @@ export const router = createBrowserRouter([
         
        
       
-      ]
+      ],
     },
-    // {
-    //   path:'dashboard',
-    //   element: <PrivateRoute> <Dashboard></Dashboard> </PrivateRoute> ,
-    //   children:[
-        
-    //     // admin routes
-    //     {
-    //       path:'users',
-    //       element:<AllUsers></AllUsers>
-    //     },
-    //     {
-    //       path:'makeAnnouncement',
-    //       element:<MakeAnnouncement></MakeAnnouncement>
-    //     },
-
-    //     // user routes
-    //     {
-    //       path:'addPost',
-    //       element:<AddPost></AddPost>
-    //     }
-        
-    //   ]
-    // }
   ]);

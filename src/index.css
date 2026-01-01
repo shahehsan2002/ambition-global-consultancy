@@ -1,117 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@keyframes fancyText {
-    0% {
-      opacity: 0;
-      transform: translateY(30px) scale(1.1);
-    }
-    50% {
-      opacity: 0.5;
-      transform: translateY(0) scale(1.05);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
+
+@layer base {
+  body {
+    @apply bg-light text-slate-800 transition-colors duration-300 ease-in-out font-sans;
+  }
+  .dark body {
+    @apply bg-dark text-slate-100;
   }
   
-  @keyframes fancyText2 {
-    0% {
-      opacity: 0;
-      transform: translateX(-30px);
-    }
-    50% {
-      opacity: 0.5;
-      transform: translateX(15px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateX(0);
-    }
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
   }
-  
-  @keyframes typingEffect {
-    0% {
-      width: 0;
-    }
-    50% {
-      width: 70%;
-    }
-    100% {
-      width: 100%;
-    }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
   }
-  
-  .animate-fancy-text {
-    animation: fancyText 1s ease-out forwards;
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/50 rounded-full hover:bg-primary transition-colors;
   }
-  
-  .animate-fancy-text-2 {
-    animation: fancyText2 1.2s ease-out forwards;
-  }
-  
-  .animate-typing-effect {
-    overflow: hidden;
-    border-right: 3px solid #fff;
-    white-space: nowrap;
-    width: 0;
-    animation: typingEffect 3s steps(30) 1s forwards;
-  }
-  
-  .services-section {
-    padding: 50px;
-    background-color: #f9fafb;
-  }
-  
-  .services-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    margin-top: 2rem;
-  }
-  
-  .service-card {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-  
-  .service-card.animate {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .service-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
-    transition: color 0.3s ease;
-  }
-  
-  .service-title:hover {
-    color: #ff7f50; /* Hover color */
-  }
-  
-  .service-description {
-    font-size: 1rem;
-    color: #666;
-  }
-  
-  @media (min-width: 768px) {
-    .services-container {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-  
-  @media (min-width: 1024px) {
-    .services-container {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-  }
-  
+}
+
+/* Animations */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* Glassmorphism Utility */
+.glass {
+  @apply bg-white/10 backdrop-blur-md border border-white/20;
+}
+.dark .glass {
+  @apply bg-black/20 border-white/10;
+}

@@ -1,21 +1,27 @@
 import { Helmet } from "react-helmet-async";
-import Banner2 from "./Banner/Banner2";
+import HeroSlider from "./Banner/HeroSlider";
 import Testimonials from "../Testimonials/Testimonials";
 import Services from "./Services/Services";
-import Supply from "./Supply/Supply";
 import Consultancy from "./Consultancy/Consultancy";
+import Supply from "./Supply/Supply";
+import Stats from "../../Components/Stats/Stats";
+import ProcessTimeline from "../../Components/ProcessTimeline/ProcessTimeline";
+import SuccessGallery from "../../Components/SuccessGallery/SuccessGallery";
 
 const Home = () => {
   return (
-    <div>
+    <div className="bg-light dark:bg-dark min-h-screen">
       <Helmet>
-        <title>Ambition |Home</title>
+        <title>Ambition | Home</title>
       </Helmet>
-      <Banner2></Banner2>
-      <Services></Services>
-      <Supply></Supply>
-      <Consultancy></Consultancy>
-      <Testimonials></Testimonials>
+      <HeroSlider />
+      <Stats />
+      <Services />
+      <ProcessTimeline />
+      <Consultancy />
+      <Supply />
+      <SuccessGallery />
+      <Testimonials />
     </div>
   );
 };
