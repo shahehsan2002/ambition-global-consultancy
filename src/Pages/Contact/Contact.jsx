@@ -57,135 +57,146 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-light dark:bg-dark pt-24 pb-12 transition-colors duration-300 relative overflow-hidden">
-       {/* Background Decoration */}
-       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] -z-10" />
-       <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-secondary/5 rounded-full blur-[100px] -z-10" />
+    <div className="min-h-screen pt-24 pb-12 relative overflow-hidden">
+       {/* Standard Background Decoration */}
+       <div className="absolute top-0 right-0 w-full h-full -z-10 bg-slate-50 dark:bg-slate-900 pointer-events-none">
+            <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px]" />
+            <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[100px]" />
+       </div>
 
-      <div className="max-w-7xl mx-auto px-6">
+    <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+      >
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-slate-900 dark:text-white tracking-tight leading-[1.1] text-retina">
+              Get in <br />
+              <span className="premium-gradient-text">Touch.</span>
+          </h2>
+          <p className="text-lg md:text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto font-medium leading-relaxed">
+              Have questions about your global journey? We're here to architect your path to success. Reach out to our expert team.
+          </p>
+      </motion.div>
+
+      <div className="grid lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+        {/* Contact Intelligence Side */}
         <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, cubicBezier: [0.16, 1, 0.3, 1] }}
+          className="lg:col-span-5 space-y-12"
         >
-            <h1 className="text-5xl font-bold mb-4 font-serif text-slate-800 dark:text-white">
-                Get in <span className="text-primary">Touch</span>
-            </h1>
-            <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto">
-                Have questions about your journey? We're here to help you navigate your path to success.
-            </p>
+          {/* Info Composition */}
+          <div className="grid gap-8">
+              {contactInfo.map((item, index) => (
+                  <div key={index} className="glass-card flex items-center p-8 rounded-[2.5rem] group hover:-translate-y-1">
+                      <div className={`p-5 rounded-2xl text-2xl mr-8 shadow-xl transition-all duration-500 group-hover:scale-110 ${item.color}`}>
+                          {item.icon}
+                      </div>
+                      <div>
+                          <h3 className="text-xl font-extrabold text-slate-900 dark:text-white mb-2 tracking-tight">{item.title}</h3>
+                          <p className="text-lg text-slate-500 dark:text-slate-400 font-medium leading-relaxed">{item.value}</p>
+                      </div>
+                  </div>
+              ))}
+          </div>
+
+          {/* Localized Connection */}
+           <div className="p-12 glass-card rounded-[3rem] border border-white/20">
+              <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-10 text-center tracking-tight">Connect Locally</h3>
+              <div className="flex justify-center gap-16">
+                  {socialLinks.map((social, index) => (
+                      <a 
+                          key={index} 
+                          href={social.link} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          aria-label={`Contact us on ${social.label}`}
+                          className="flex flex-col items-center gap-4 group"
+                      >
+                          <div className={`text-5xl ${social.color} transform transition-all duration-700 group-hover:scale-125 group-hover:rotate-12 drop-shadow-2xl`}>
+                              {social.icon}
+                          </div>
+                          <span className="text-xs font-black tracking-[0.2em] uppercase text-slate-400 group-hover:text-primary transition-colors">{social.label}</span>
+                      </a>
+                  ))}
+              </div>
+          </div>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Contact Info Side */}
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-8"
-          >
-            {/* Info Cards */}
-            <div className="grid gap-6">
-                {contactInfo.map((item, index) => (
-                    <div key={index} className="flex items-center p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-100 dark:border-slate-700/50 hover:shadow-xl transition-shadow duration-300">
-                        <div className={`p-4 rounded-full text-2xl mr-6 ${item.color}`}>
-                            {item.icon}
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-1">{item.title}</h3>
-                            <p className="text-slate-600 dark:text-slate-400 font-medium">{item.value}</p>
-                        </div>
-                    </div>
-                ))}
-            </div>
-
-            {/* Social Links */}
-             <div className="p-8 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-3xl border border-white/20 backdrop-blur-sm">
-                <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-6 text-center">Connect Locally</h3>
-                <div className="flex justify-center gap-8">
-                    {socialLinks.map((social, index) => (
-                        <a 
-                            key={index} 
-                            href={social.link} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="flex flex-col items-center gap-2 group"
-                        >
-                            <div className={`text-4xl ${social.color} transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6`}>
-                                {social.icon}
-                            </div>
-                            <span className="text-sm font-medium text-slate-600 dark:text-slate-400 group-hover:text-primary transition-colors">{social.label}</span>
-                        </a>
-                    ))}
-                </div>
-            </div>
-          </motion.div>
-
-          {/* Form Side */}
-          <motion.div 
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="bg-white dark:bg-slate-800 rounded-3xl p-8 lg:p-10 shadow-2xl border border-slate-100 dark:border-slate-700/50"
-          >
-            <h2 className="text-2xl font-bold mb-8 text-slate-800 dark:text-white">Send us a Message</h2>
-            <form ref={form} onSubmit={sendEmail} className="space-y-6">
-              <div>
-                <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Full Name</label>
-                <input
-                  type="text"
-                  name="user_name"
-                  placeholder="John Doe"
-                  className="w-full px-5 py-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
-                  required
-                />
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                    <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Email Address</label>
+        {/* Transmission Side */}
+        <motion.div 
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.2, cubicBezier: [0.16, 1, 0.3, 1] }}
+          className="lg:col-span-12 lg:order-last xl:col-span-7 xl:order-none"
+        >
+            <div className="glass-card rounded-[3.5rem] p-10 lg:p-16 border border-white/20">
+              <h2 className="text-3xl font-black mb-12 text-slate-900 dark:text-white tracking-tight">Dispatch a Message</h2>
+              <form ref={form} onSubmit={sendEmail} className="space-y-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                  <div className="space-y-3">
+                    <label className="block text-sm font-black text-slate-400 uppercase tracking-widest ml-1">Full Name</label>
                     <input
-                    type="email"
-                    name="user_email"
-                    placeholder="john@example.com"
-                    className="w-full px-5 py-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
-                    required
+                      type="text"
+                      name="user_name"
+                      placeholder="e.g. Alexander Pierce"
+                      className="w-full px-8 py-5 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none font-medium placeholder:text-slate-300 dark:placeholder:text-slate-600"
+                      required
+                    />
+                  </div>
+                  
+                  <div className="space-y-3">
+                      <label className="block text-sm font-black text-slate-400 uppercase tracking-widest ml-1">Email Address</label>
+                      <input
+                        type="email"
+                        name="user_email"
+                        placeholder="alexander@visionary.com"
+                        className="w-full px-8 py-5 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none font-medium placeholder:text-slate-300 dark:placeholder:text-slate-600"
+                        required
+                      />
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                    <label className="block text-sm font-black text-slate-400 uppercase tracking-widest ml-1">Subject / Phone Number</label>
+                    <input
+                      type="text"
+                      name="user_phone"
+                      placeholder="How can we expedite your journey?"
+                      className="w-full px-8 py-5 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none font-medium placeholder:text-slate-300 dark:placeholder:text-slate-600"
+                      required
                     />
                 </div>
-                <div>
-                    <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Phone Number</label>
-                    <input
-                    type="tel"
-                    name="user_phone"
-                    placeholder="+123..."
-                    className="w-full px-5 py-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
+
+                <div className="space-y-3">
+                  <label className="block text-sm font-black text-slate-400 uppercase tracking-widest ml-1">Brief Your Ambition</label>
+                  <textarea
+                    name="message"
+                    placeholder="Describe your goals in detail..."
+                    className="w-full px-8 py-6 rounded-3xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none resize-none h-48 font-medium placeholder:text-slate-300 dark:placeholder:text-slate-600"
                     required
-                    />
+                  ></textarea>
                 </div>
-              </div>
 
-              <div>
-                <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Your Message</label>
-                <textarea
-                  name="message"
-                  placeholder="How can we help you?"
-                  className="w-full px-5 py-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none resize-none h-32"
-                  required
-                ></textarea>
-              </div>
-
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full py-4 px-6 bg-gradient-to-r from-primary to-indigo-600 hover:from-indigo-600 hover:to-primary text-white font-bold rounded-xl shadow-lg shadow-primary/30 hover:shadow-primary/50 transform hover:-translate-y-1 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </button>
-            </form>
-          </motion.div>
-        </div>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full lg:w-max px-16 py-6 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-black rounded-2xl shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed group flex items-center justify-center gap-4"
+                >
+                  {isSubmitting ? "Dispatching..." : "Send Dispatch"}
+                  <MdEmail className={`${isSubmitting ? 'animate-bounce' : 'group-hover:translate-x-1 group-hover:-translate-y-1'} transition-transform duration-300`} />
+                </button>
+              </form>
+            </div>
+        </motion.div>
       </div>
+    </div>
     </div>
   );
 };

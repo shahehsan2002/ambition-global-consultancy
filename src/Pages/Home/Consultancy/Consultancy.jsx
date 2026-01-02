@@ -1,6 +1,7 @@
 import PremiumAccordion from "../../../Components/PremiumAccordion/PremiumAccordion";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { FiArrowRight } from "react-icons/fi";
 
 const Consultancy = () => {
     const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
@@ -21,34 +22,41 @@ const Consultancy = () => {
     ];
 
     return (
-        <div className="py-20 bg-light dark:bg-dark relative overflow-hidden">
-             {/* Abstract Background Elements */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10" />
-            
-            <div ref={ref} className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+        <div ref={ref} className="max-w-7xl mx-auto px-6">
+            <div className="grid lg:grid-cols-2 gap-20 lg:gap-32 items-center">
                 <motion.div
-                    initial={{ opacity: 0, x: -50 }}
+                    initial={{ opacity: 0, x: -30 }}
                     animate={inView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.8 }}
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 font-serif text-slate-800 dark:text-white">
-                        Expert Student <br />
-                        <span className="text-primary">Consultancy</span>
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-slate-900 dark:text-white tracking-tight leading-[1.1] text-retina">
+                        Expert <br />
+                        <span className="premium-gradient-text">
+                            Student Guidance.
+                        </span>
                     </h2>
-                    <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 leading-relaxed">
-                        Navigate your academic journey with confidence. Our dedicated consultants are here to guide you every step of the way, turning your dreams of studying abroad into reality.
+                    <p className="text-lg md:text-xl text-slate-500 dark:text-slate-400 mb-10 leading-relaxed max-w-lg font-medium">
+                        Navigate your academic journey with absolute confidence. Our dedicated consultants are architecting your path to global success, turning your aspirations into reality.
                     </p>
-                    <button className="btn btn-primary text-white px-8 rounded-full shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all">
-                        Book a Free Session
-                    </button>
+                    
+                    <div className="flex flex-wrap gap-6">
+                        <button className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-blue-600 dark:bg-white text-white dark:text-black rounded-full text-lg font-bold hover:scale-[1.03] active:scale-[0.98] transition-all duration-500 shadow-[0_20px_40px_-10px_rgba(37,99,235,0.4)] hover:shadow-[0_25px_50px_-12px_rgba(37,99,235,0.5)] group">
+                            Start Your Application
+                            <FiArrowRight className="group-hover:translate-x-1 transition-transform duration-300" />
+                        </button>
+                    </div>
                 </motion.div>
 
                 <motion.div
-                    initial={{ opacity: 0, x: 50 }}
+                    initial={{ opacity: 0, x: 40 }}
                     animate={inView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.8, delay: 0.2 }}
+                    transition={{ duration: 1, delay: 0.2, cubicBezier: [0.16, 1, 0.3, 1] }}
+                    className="relative"
                 >
-                    <PremiumAccordion items={faqItems} />
+                    <div className="absolute -inset-4 bg-primary/5 blur-3xl rounded-[3rem] -z-10" />
+                    <div className="glass-card p-2 rounded-[3rem]">
+                        <PremiumAccordion items={faqItems} />
+                    </div>
                 </motion.div>
             </div>
         </div>

@@ -19,6 +19,13 @@ const ErrorPage = () => {
                 <p className="text-slate-600 dark:text-slate-400 mb-8 text-lg">
                     The page you are looking for seems to have flown away. But don't worry, you can always find your way back.
                 </p>
+                {error && (
+                    <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-6 max-w-xl mx-auto overflow-auto">
+                        <strong className="font-bold">Error Check: </strong>
+                        <span className="block sm:inline">{error.statusText || error.message}</span>
+                        {error.stack && <pre className="text-xs mt-2 text-left">{error.stack}</pre>}
+                    </div>
+                )}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Link to="/" className="btn btn-primary gap-2 text-white px-8">
                         <FaHome /> Back Home

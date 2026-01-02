@@ -16,8 +16,8 @@ const Stats = () => {
     ];
 
     return (
-        <div className="py-20 bg-primary/5 dark:bg-slate-900/50">
-            <div ref={ref} className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div ref={ref} className="max-w-7xl mx-auto px-6 relative z-10">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
                 {stats.map((stat, index) => (
                     <StatItem key={index} stat={stat} inView={inView} index={index} />
                 ))}
@@ -34,18 +34,17 @@ const StatItem = ({ stat, inView, index }) => {
             let start = 0;
             const end = stat.value;
             const duration = 2000;
-            const incrementTime = Math.floor(duration / end);
-            
-            // For larger numbers, increment by more than 1 to keep duration constant
-            const step = end > 100 ? Math.ceil(end / 100) : 1;
-            const timerDuration = end > 100 ? Math.floor(duration / 100) : incrementTime;
+            const incrementTime = Math.floor(duration / 100);
+            const step = Math.ceil(end / 100);
 
             const timer = setInterval(() => {
                 start += step;
-                if (start > end) start = end;
+                if (start >= end) {
+                    start = end;
+                    clearInterval(timer);
+                }
                 setCount(start);
-                if (start === end) clearInterval(timer);
-            }, timerDuration);
+            }, incrementTime);
 
             return () => clearInterval(timer);
         }
@@ -53,15 +52,17 @@ const StatItem = ({ stat, inView, index }) => {
 
     return (
         <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-            className="text-center"
+            transition={{ duration: 1, delay: index * 0.1, cubicBezier: [0.16, 1, 0.3, 1] }}
+            className="text-center p-8 rounded-[2.5rem] bg-white dark:bg-white/5 border border-slate-100 dark:border-white/10 hover:shadow-2xl transition-all duration-700 group"
         >
-            <h3 className="text-4xl md:text-5xl font-bold text-primary mb-2 font-serif">
-                {count}{stat.suffix}
+            <h3 className="text-6xl md:text-7xl font-extrabold mb-3 tracking-tighter text-retina transition-transform duration-500 group-hover:scale-105">
+                <span className="premium-gradient-text">
+                    {count}{stat.suffix}
+                </span>
             </h3>
-            <p className="text-slate-600 dark:text-slate-400 font-medium uppercase tracking-wider text-sm">
+            <p className="text-slate-500 dark:text-slate-400 font-bold text-xs md:text-sm tracking-[0.2em] uppercase">
                 {stat.label}
             </p>
         </motion.div>

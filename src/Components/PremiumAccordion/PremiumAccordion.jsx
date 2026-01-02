@@ -10,26 +10,26 @@ const PremiumAccordion = ({ items }) => {
             {items.map((item, index) => (
                 <div 
                     key={index}
-                    className={`rounded-xl overflow-hidden transition-all duration-300 ${
+                    className={`rounded-3xl overflow-hidden transition-all duration-500 ${
                         activeIndex === index 
-                            ? 'bg-white dark:bg-slate-800 shadow-lg ring-1 ring-primary/20' 
-                            : 'bg-white/50 dark:bg-slate-800/50 hover:bg-white dark:hover:bg-slate-800'
+                            ? 'bg-white dark:bg-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.05)] ring-1 ring-slate-100 dark:ring-white/10' 
+                            : 'bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10'
                     }`}
                 >
                     <button
                         onClick={() => setActiveIndex(activeIndex === index ? -1 : index)}
-                        className="w-full px-6 py-4 flex items-center justify-between text-left focus:outline-none"
+                        className="w-full px-8 py-6 flex items-center justify-between text-left focus:outline-none"
                     >
-                        <span className={`text-lg font-medium pr-8 transition-colors ${
-                            activeIndex === index ? 'text-primary' : 'text-slate-800 dark:text-white'
+                        <span className={`text-xl font-bold transition-colors duration-300 ${
+                            activeIndex === index ? 'text-slate-900 dark:text-white' : 'text-slate-600 dark:text-gray-400'
                         }`}>
                             {item.question}
                         </span>
-                        <span className={`text-xl transition-transform duration-300 ${
-                            activeIndex === index ? 'text-primary rotate-180' : 'text-slate-400'
+                        <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-500 ${
+                             activeIndex === index ? 'bg-slate-900 dark:bg-white text-white dark:text-black rotate-180' : 'bg-slate-100 dark:bg-white/5 text-slate-400'
                         }`}>
-                            {activeIndex === index ? <FiMinus /> : <FiPlus />}
-                        </span>
+                            {activeIndex === index ? <FiMinus className="text-lg" /> : <FiPlus className="text-lg" />}
+                        </div>
                     </button>
                     
                     <AnimatePresence>
@@ -38,9 +38,9 @@ const PremiumAccordion = ({ items }) => {
                                 initial={{ height: 0, opacity: 0 }}
                                 animate={{ height: 'auto', opacity: 1 }}
                                 exit={{ height: 0, opacity: 0 }}
-                                transition={{ duration: 0.3 }}
+                                transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
                             >
-                                <div className="px-6 pb-6 text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-slate-700/50 pt-4">
+                                <div className="px-8 pb-8 text-lg text-slate-500 dark:text-gray-400 leading-relaxed border-t border-slate-50 dark:border-white/5 pt-6 font-medium">
                                     {item.answer}
                                 </div>
                             </motion.div>

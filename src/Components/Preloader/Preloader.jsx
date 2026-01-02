@@ -1,40 +1,70 @@
+
+import { useRef } from 'react';
 import { motion } from 'framer-motion';
-import { FaPlane } from 'react-icons/fa';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { Tetrahedron, MeshDistortMaterial, Float } from '@react-three/drei';
+
+const SpinningShape = () => {
+    const ref = useRef();
+    useFrame((state) => {
+        const t = state.clock.getElapsedTime();
+        ref.current.rotation.x = t;
+        ref.current.rotation.y = t / 2;
+    });
+
+    return (
+        <Float speed={5} rotationIntensity={2} floatIntensity={1}>
+            <Tetrahedron args={[1.5]} ref={ref}>
+                 <MeshDistortMaterial
+                    color="#3b82f6"
+                    speed={2}
+                    distort={0.4}
+                    transparent
+                    opacity={0.8}
+                    wireframe
+                />
+            </Tetrahedron>
+        </Float>
+    );
+};
 
 const Preloader = () => {
     return (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-white dark:bg-slate-900 transition-colors duration-300">
-            <div className="relative text-center">
-                {/* Globe/Circle */}
-                <motion.div
-                    className="w-32 h-32 border-4 border-slate-200 dark:border-slate-700 rounded-full mx-auto relative"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5 }}
-                >
-                    {/* Rotating Plane */}
-                    <motion.div
-                        className="absolute w-full h-full"
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                    >
-                         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 text-primary text-2xl transform -rotate-45">
-                            <FaPlane />
-                        </div>
-                    </motion.div>
-                    
-                    {/* Inner Pulse */}
-                    <div className="absolute inset-0 m-auto w-24 h-24 bg-primary/10 rounded-full animate-ping" />
-                     <div className="absolute inset-0 m-auto w-16 h-16 bg-primary/20 rounded-full animate-pulse" />
-                </motion.div>
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
+            <div className="relative text-center w-full h-full flex flex-col items-center justify-center">
+                 {/* 3D Scene */}
+                <div className="w-64 h-64">
+                    <Canvas camera={{ position: [0, 0, 4] }}>
+                        <ambientLight intensity={0.5} />
+                        <pointLight position={[10, 10, 10]} />
+                        <SpinningShape />
+                    </Canvas>
+                </div>
 
-                <h2 className="mt-8 text-2xl font-bold font-serif text-slate-800 dark:text-white tracking-widest uppercase">
-                    Ambition
-                    <span className="text-primary block text-sm font-sans font-medium tracking-[0.3em] mt-2">Global Consultantcy</span>
-                </h2>
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 }}
+                >
+                    <h2 className="mt-4 text-3xl font-bold font-serif text-slate-800 dark:text-white tracking-widest uppercase">
+                        Ambition
+                    </h2>
+                    <span className="text-primary text-sm font-sans font-medium tracking-[0.4em] block mt-2">GLOBAL CONSULTANCY</span>
+                    
+                    {/* Loading Bar */}
+                    <div className="w-48 h-1 bg-slate-200 dark:bg-slate-800 rounded-full mx-auto mt-6 overflow-hidden">
+                        <motion.div 
+                            className="h-full bg-primary"
+                            initial={{ width: "0%" }}
+                            animate={{ width: "100%" }}
+                            transition={{ duration: 1.5, repeat: Infinity }}
+                        />
+                    </div>
+                </motion.div>
             </div>
         </div>
     );
 };
 
 export default Preloader;
+

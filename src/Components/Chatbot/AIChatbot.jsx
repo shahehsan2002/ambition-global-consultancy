@@ -45,50 +45,57 @@ const AIChatbot = () => {
     };
 
     return (
-        <div className="fixed bottom-6 right-24 z-40">
+        <div className="fixed bottom-6 right-6 lg:right-10 z-[60]">
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                        initial={{ opacity: 0, y: 20, scale: 0.9, transformOrigin: "bottom right" }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 20, scale: 0.9 }}
-                        className="absolute bottom-20 right-0 w-80 sm:w-96 bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden flex flex-col max-h-[500px]"
+                        className="absolute bottom-20 right-0 w-[90vw] sm:w-96 glass rounded-2xl overflow-hidden flex flex-col max-h-[600px] border border-white/20 dark:border-white/10 shadow-2xl backdrop-blur-xl"
                     >
                         {/* Header */}
-                        <div className="bg-primary p-4 flex justify-between items-center text-white">
+                        <div className="bg-primary/90 backdrop-blur-md p-4 flex justify-between items-center text-white border-b border-white/10">
                             <div className="flex items-center gap-3">
-                                <div className="bg-white/20 p-2 rounded-full">
-                                    <FiCpu size={20} />
+                                <div className="bg-white/20 p-2 rounded-full ring-1 ring-white/30">
+                                    <FiCpu size={18} />
                                 </div>
                                 <div>
-                                    <h3 className="font-bold">Ambition AI</h3>
-                                    <p className="text-xs opacity-80">Online | Instant Support</p>
+                                    <h3 className="font-bold font-serif tracking-wide">Ambition AI</h3>
+                                    <p className="text-[10px] uppercase tracking-wider opacity-80 flex items-center gap-1">
+                                        <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span> Online
+                                    </p>
                                 </div>
                             </div>
-                            <button onClick={() => setIsOpen(false)} className="hover:bg-white/20 p-1 rounded transition-colors">
-                                <FiX size={20} />
+                            <button onClick={() => setIsOpen(false)} className="hover:bg-white/20 p-1.5 rounded-lg transition-colors">
+                                <FiX size={18} />
                             </button>
                         </div>
 
                         {/* Messages Body */}
-                        <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-50 dark:bg-slate-900/50">
+                        <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-white/50 dark:bg-slate-900/50 backdrop-blur-md custom-scrollbar">
                             {messages.map((msg) => (
-                                <div key={msg.id} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
-                                    <div className={`max-w-[80%] p-3 rounded-2xl text-sm ${
+                                <motion.div 
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    key={msg.id} 
+                                    className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                                >
+                                    <div className={`max-w-[85%] p-3.5 rounded-2xl text-sm leading-relaxed shadow-sm ${
                                         msg.sender === 'user' 
-                                        ? 'bg-primary text-white rounded-br-none' 
-                                        : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-bl-none shadow-sm'
+                                        ? 'bg-gradient-to-r from-primary to-blue-600 text-white rounded-br-none' 
+                                        : 'bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 text-slate-700 dark:text-slate-200 rounded-bl-none'
                                     }`}>
                                         {msg.text}
                                     </div>
-                                </div>
+                                </motion.div>
                             ))}
                             {typing && (
                                 <div className="flex justify-start">
-                                    <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-3 rounded-2xl rounded-bl-none shadow-sm flex gap-1">
-                                        <motion.div animate={{ y: [0, -5, 0] }} transition={{ repeat: Infinity, duration: 0.6 }} className="w-2 h-2 bg-slate-400 rounded-full" />
-                                        <motion.div animate={{ y: [0, -5, 0] }} transition={{ repeat: Infinity, duration: 0.6, delay: 0.2 }} className="w-2 h-2 bg-slate-400 rounded-full" />
-                                        <motion.div animate={{ y: [0, -5, 0] }} transition={{ repeat: Infinity, duration: 0.6, delay: 0.4 }} className="w-2 h-2 bg-slate-400 rounded-full" />
+                                    <div className="bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 p-4 rounded-2xl rounded-bl-none shadow-sm flex gap-1.5">
+                                        <motion.div animate={{ y: [0, -6, 0] }} transition={{ repeat: Infinity, duration: 0.6 }} className="w-2 h-2 bg-primary/50 rounded-full" />
+                                        <motion.div animate={{ y: [0, -6, 0] }} transition={{ repeat: Infinity, duration: 0.6, delay: 0.2 }} className="w-2 h-2 bg-primary/50 rounded-full" />
+                                        <motion.div animate={{ y: [0, -6, 0] }} transition={{ repeat: Infinity, duration: 0.6, delay: 0.4 }} className="w-2 h-2 bg-primary/50 rounded-full" />
                                     </div>
                                 </div>
                             )}
@@ -96,13 +103,13 @@ const AIChatbot = () => {
                         </div>
 
                         {/* Quick Options */}
-                        <div className="p-4 bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700">
-                             <div className="flex flex-wrap gap-2 mb-3">
+                        <div className="p-4 bg-white/80 dark:bg-slate-900/80 border-t border-slate-100 dark:border-slate-800 backdrop-blur-md">
+                             <div className="flex flex-wrap gap-2">
                                 {faqs.map((faq, idx) => (
                                     <button 
                                         key={idx}
                                         onClick={() => handleSend(faq.q)}
-                                        className="text-xs bg-slate-100 dark:bg-slate-700 hover:bg-primary hover:text-white dark:hover:bg-primary transition-colors px-3 py-1 rounded-full text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600"
+                                        className="text-[11px] font-medium bg-slate-100 dark:bg-slate-800 hover:bg-primary hover:text-white dark:hover:bg-primary transition-all px-3 py-1.5 rounded-full text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 active:scale-95"
                                     >
                                         {faq.q}
                                     </button>
@@ -116,10 +123,11 @@ const AIChatbot = () => {
             {/* Toggle Button */}
             <motion.button
                 onClick={() => setIsOpen(!isOpen)}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="bg-primary text-white p-4 rounded-full shadow-lg shadow-primary/30 hover:bg-indigo-600 transition-colors flex items-center justify-center"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="group relative flex items-center justify-center w-14 h-14 bg-gradient-to-r from-primary to-indigo-600 text-white rounded-full shadow-lg shadow-primary/40 hover:shadow-primary/60 transition-all z-50"
             >
+               <span className="absolute inset-0 rounded-full bg-white/20 animate-ping opacity-0 group-hover:opacity-100"></span>
                {isOpen ? <FiX size={24} /> : <FiMessageSquare size={24} />}
             </motion.button>
         </div>

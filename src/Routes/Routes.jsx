@@ -12,7 +12,7 @@ import Home from "../Pages/Home/Home";
 import AboutUs from "../Pages/About Us/AboutUs";
 import Contact from "../Pages/Contact/Contact";
 
-// import ServiceDetails from "../Pages/Home/Services/ServiceDetails";
+import ServiceDetails from "../Pages/Home/Services/ServiceDetails";
 
 
 
@@ -44,6 +44,10 @@ export const router = createBrowserRouter([
         
        
       
+        {
+          path:'/item/:id',
+          element:<ServiceDetails />
+        },
       ],
     },
   ]);

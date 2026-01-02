@@ -1,6 +1,7 @@
 import PremiumAccordion from "../../../Components/PremiumAccordion/PremiumAccordion";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { FiArrowRight } from "react-icons/fi";
 
 const Supply = () => {
     const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
@@ -21,34 +22,43 @@ const Supply = () => {
     ];
 
     return (
-        <div className="py-20 bg-white dark:bg-slate-900 relative">
-            <div ref={ref} className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-                 {/* Order change for visual interest: Text on right for this section */}
+        <div ref={ref} className="max-w-7xl mx-auto px-6">
+            <div className="grid lg:grid-cols-2 gap-20 lg:gap-32 items-center">
+                {/* Accordion Side */}
                 <motion.div
                     className="order-2 lg:order-1"
-                    initial={{ opacity: 0, x: -50 }}
+                    initial={{ opacity: 0, x: -40 }}
+                    animate={inView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 1, delay: 0.2, cubicBezier: [0.16, 1, 0.3, 1] }}
+                >
+                     <div className="glass-card p-2 rounded-[3rem]">
+                        <PremiumAccordion items={faqItems} />
+                     </div>
+                </motion.div>
+
+                {/* Text Side */}
+                <motion.div
+                    className="order-1 lg:order-2 lg:text-right flex flex-col lg:items-end"
+                    initial={{ opacity: 0, x: 30 }}
                     animate={inView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.8 }}
                 >
-                     <PremiumAccordion items={faqItems} />
-                </motion.div>
-
-                <motion.div
-                    className="order-1 lg:order-2 text-right"
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={inView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                >
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 font-serif text-slate-800 dark:text-white">
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-slate-900 dark:text-white tracking-tight leading-[1.1] text-retina">
                         Corporate <br />
-                        <span className="text-secondary">Solutions</span>
+                        <span className="premium-gradient-text">
+                            Solutions.
+                        </span>
                     </h2>
-                    <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 leading-relaxed ml-auto max-w-lg">
-                        Streamline your business travel with our specialized corporate supply services. Efficiency, reliability, and class - delivered to your organization.
+                    <p className="text-lg md:text-xl text-slate-500 dark:text-slate-400 mb-10 leading-relaxed max-w-lg font-medium">
+                        Streamline your organization's global mobility with our specialized corporate supply services. Efficiency, reliability, and world-class class — architected for your enterprise.
                     </p>
-                    <button className="btn btn-secondary text-white px-8 rounded-full shadow-lg shadow-pink-500/30 hover:shadow-pink-500/50 transition-all">
-                        Partner With Us
-                    </button>
+                    
+                    <div className="flex flex-wrap gap-6">
+                        <button className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-black rounded-full text-lg font-bold hover:scale-[1.03] active:scale-[0.98] transition-all duration-500 shadow-xl hover:shadow-2xl group">
+                            Partner with Ambition
+                            <FiArrowRight className="group-hover:translate-x-1 transition-transform duration-300" />
+                        </button>
+                    </div>
                 </motion.div>
             </div>
         </div>
